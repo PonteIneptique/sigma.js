@@ -55,7 +55,7 @@
      *
      * @return  {object}          Dictionary with new edge
      */
-    "edge" : function(type, dict, id, label, rdf) {
+    "edge" : function(type, dict, id, rdf, label) {
       if (!(id in dict)) {
         dict[id] = {
           "id" : id,
@@ -79,7 +79,7 @@
      *
      * @return  {object}          Dictionary with new node
      */
-    "node" : function (dict, id, label, rdf) {
+    "node" : function (dict, id, rdf, label) {
       if(!(id in dict)) {
         dict[id] = {
           "id" : id,
@@ -166,6 +166,7 @@
           tempgraph["nodes"] = sigma.parsers._snap.node(
             tempgraph["nodes"], 
             element["@id"], 
+            element,
             element["rdfs:label"]
           );
 
@@ -180,8 +181,8 @@
                   false,
                   tempgraph["edges"], 
                   bond["@id"], 
-                  bond["rdfs:label"], 
-                  bond
+                  bond, 
+                  bond["rdfs:label"]
                 );
 
               //Update the source
@@ -193,8 +194,8 @@
                 false,
                 tempgraph["edges"], 
                 element["snap:has-bond"]["@id"], 
-                element["snap:has-bond"]["rdfs:label"], 
-                element["snap:has-bond"]
+                element["snap:has-bond"], 
+                element["snap:has-bond"]["rdfs:label"]
               );
 
               //Update the source
@@ -217,8 +218,8 @@
                   "associated-place",
                   tempgraph["edges"], // Graph dict
                   bond_name, // Name
-                  bond["rdfs:label"], // Label (Mostly undefined)
-                  bond // RDF Representation
+                  bond,  // RDF Representation
+                  bond["rdfs:label"]  // Label (Mostly undefined)
                 );
                 tempgraph["edges"][bond_name]["source"] = element["@id"];
                 tempgraph["edges"][bond_name]["target"] = bond["@id"];
@@ -229,9 +230,9 @@
               tempgraph["edges"] = sigma.parsers._snap.edge(
                 "associated-place",
                 tempgraph["edges"], 
-                bond_name, 
-                element["snap:associated-place"]["rdfs:label"],
-                element["snap:associated-place"]
+                bond_name,
+                element["snap:associated-place"], 
+                element["snap:associated-place"]["rdfs:label"]
               );
 
               tempgraph["edges"][bond_name]["source"] = element["@id"];
@@ -242,35 +243,37 @@
 
         // If it is a relationship
         } else if ("snap:bond-with" in element) {
-          // If no edge has been created with this id, we create it
-          if (!(element["@id"] in tempgraph["edges"])) {
-            tempgraph["edges"][element["@id"]] = {
-              "id" : element["@id"]
-            }
-          }
+          // We update or create the edge
+          tempgraph["edges"] = sigma.parsers._snap.edge(
+            element["@type"],
+            tempgraph["edges"],
+            element["@id"],
+            element,
+            element["@rdfs:label"]
+          )
 
           // We set up the target of the edge
           tempgraph["edges"][element["@id"]]["target"] = element["snap:bond-with"]["@id"];
 
           // We check for snap properties and thing like that
 
-          // Here we check for the @type property
-          if ("@type" in element) {
-            tempgraph["edges"][element["@id"]]["type"] = element["@type"];
-          }
-
           //We check that this node does exist, if not, we instantiate it
-          if(!(element["snap:bond-with"]["@id"] in tempgraph["nodes"])) {
-            tempgraph["nodes"][element["snap:bond-with"]["@id"]] = {
-              "label" : element["snap:bond-with"]["@id"],
-              "id" : element["snap:bond-with"]["@id"]
-            }
-          }
+          tempgraph["nodes"] = sigma.parsers._snap.node(
+            tempgraph["nodes"],
+            element["snap:bond-with"]["@id"],
+            element["snap:bond-with"],
+            element["snap:bond-with"]["@label"]
+          )
 
         // For now, we think everything else is nodes !
         } else {
           //We instantiate the node through our helper
-          tempgraph["nodes"] = sigma.parsers._snap.node(tempgraph["nodes"], element["@id"], element["rdfs:label"]);
+          tempgraph["nodes"] = sigma.parsers._snap.node(
+            tempgraph["nodes"], 
+            element["@id"], 
+            element, 
+            element["rdfs:label"]
+          );
         }
       });
 
