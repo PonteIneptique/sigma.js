@@ -157,8 +157,6 @@
           "edges" : Object.keys(tempgraph["edges"]).map(function(key){return tempgraph["edges"][key]})
         }
 
-        console.log(graph);
-
         // Update the instance's graph:
         if (sig instanceof sigma) {
           sig.graph.clear();

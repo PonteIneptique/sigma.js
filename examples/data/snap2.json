@@ -1,0 +1,132 @@
+{
+  "@context": {
+    "bibo": "http://purl.org/ontology/bibo/",
+    "cnt": "http://www.w3.org/2011/content# ",
+    "dc": "http://purl.org/dc/elements/1.1/",
+    "dct": "http://purl.org/dc/terms/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "lawd": "http://lawd.info/ontology/",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "snap": "http://onto.snapdrgn.net/snap#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@graph": [
+    {
+      "@id": "http://data.perseus.org/people/smith:brutus-18#relationship-husband-paulla-valeria",
+      "@type": "snap:husbandOf",
+      "rdfs:label": "married Paulla Valeria"
+    },
+    {
+      "@id": "http://data.perseus.org/people/smith:brutus-18#personref",
+      "@type": "lawd:Attestation",
+      "dcterms:publisher": {
+        "@id": "http://www.perseus.tufts.edu/"
+      },
+      "lawd:hasCitation": [
+        {
+          "@id": "http://data.perseus.org/citations/urn:cts:latinLit:phi0448.phi001.perseus-lat1:3.11"
+        },
+        {
+          "@id": "http://data.perseus.org/citations/urn:cts:latinLit:phi0631.phi001.perseus-lat1:25"
+        },
+        {
+          "@id": "http://data.perseus.org/citations/urn:cts:greekLit:tlg0007.tlg048.perseus-grc1:64"
+        }
+      ]
+    },
+    {
+      "@id": "http://data.perseus.org/citations/urn:cts:greekLit:tlg0007.tlg048.perseus-grc1:64",
+      "@type": [
+        "lawd:Citation",
+        "http://www.w3.org/2011/content# ContentAsText"
+      ],
+      "http://www.w3.org/2011/content# chars": "Plut. Caes. 64"
+    },
+    {
+      "@id": "http://data.perseus.org/people/smith:brutus-18#relationship-adopted-albinus",
+      "@type": [
+        "snap:sonOf",
+        "snap:adoptedFamilyRelationship"
+      ],
+      "rdfs:label": "adopted by A. Postumius Albinus"
+    },
+    {
+      "@id": "http://data.perseus.org/people/smith:brutus-18#this",
+      "@type": "lawd:Person",
+      "dcterms:bibliographicCitation": "Brutus 18",
+      "dcterms:publisher": {
+        "@id": "http://www.perseus.tufts.edu/"
+      },
+      "foaf:name": {
+        "@language": "en",
+        "@value": "D. Junius Brutus Albinus"
+      },
+      "lawd:hasAttestation": {
+        "@id": "http://data.perseus.org/people/smith:brutus-18#personref"
+      },
+      "snap:associatedDate": "-0099/-0043",
+      "snap:associatedPlace": {
+        "@id": "http://pleiades.stoa.org/places/383801"
+      },
+      "snap:hasBond": [
+        {
+          "@id": "http://data.perseus.org/people/smith:brutus-18#relationship-son-sempronia"
+        },
+        {
+          "@id": "http://data.perseus.org/people/smith:brutus-18#relationship-son-brutus-16"
+        },
+        {
+          "@id": "http://data.perseus.org/people/smith:brutus-18#relationship-husband-palla-valeria"
+        },
+        {
+          "@id": "http://data.perseus.org/people/smith:brutus-18#relationship-adopted-albinus"
+        }
+      ]
+    },
+    {
+      "@id": "http://www.perseus.tufts.edu/",
+      "@type": "dc:Agent",
+      "bibo:shortTitle": "Smith",
+      "dc:title": "The Perseus Smith dictionary...",
+      "foaf:homepage": {
+        "@id": "http://www.perseus.tufts.edu/"
+      }
+    },
+    {
+      "@id": "http://data.perseus.org/people/smith:brutus-18#relationship-son-brutus-16",
+      "@type": "snap:sonOf",
+      "rdfs:label": "son of Brutus 16",
+      "snap:bond-with": {
+        "@id": "http://data.perseus.org/people/smith:brutus-16"
+      }
+    },
+    {
+      "@id": "http://data.perseus.org/citations/urn:cts:latinLit:phi0448.phi001.perseus-lat1:3.11",
+      "@type": [
+        "http://www.w3.org/2011/content# ContentAsText",
+        "lawd:Citation"
+      ],
+      "http://www.w3.org/2011/content# chars": "Caes. Gal. 3.11"
+    },
+    {
+      "@id": "http://pleiades.stoa.org/places/383801#this",
+      "@type": "lawd:Place",
+      "rdfs:label": "Cisalpine Gaul"
+    },
+    {
+      "@id": "http://data.perseus.org/citations/urn:cts:latinLit:phi0631.phi001.perseus-lat1:25",
+      "@type": [
+        "lawd:Citation",
+        "http://www.w3.org/2011/content# ContentAsText"
+      ],
+      "http://www.w3.org/2011/content# chars": "Sal. Cat. 25"
+    },
+    {
+      "@id": "http://data.perseus.org/people/smith:brutus-18#relationship-son-sempronia",
+      "@type": "snap:sonOf",
+      "rdfs:label": "son of Sempronia"
+    }
+  ]
+}
