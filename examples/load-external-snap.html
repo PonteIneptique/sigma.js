@@ -81,8 +81,10 @@ s = sigma.parsers.snap(
         node.y = Math.sin(Math.PI * 2 * i / a.length);
       });
 
+      sig_object.refresh();
 
-      sig_object.startForceAtlas2({worker: true, barnesHutOptimize: false});
+
+      //sig_object.startForceAtlas2({worker: true, barnesHutOptimize: false});
     }
   );
 

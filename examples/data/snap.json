@@ -27,7 +27,15 @@
       "@id": "http://data.perseus.org/people/smith:Diomedes-1",
       "snap:has-bond": {
         "@id": "http://data.perseus.org/collections/urn:cite:perseus:pdlann.141.1/graph#1-rel-1"
+      },
+      "snap:associated-place": {
+        "@id": "http://pleiades.stoa.org/places/383801"
       }
+    },
+    {
+      "@id": "http://pleiades.stoa.org/places/383801",
+      "@type": "lawd:Place",
+      "rdfs:label": "Cisalpine Gaul"
     }
   ]
 }
