@@ -44,6 +44,17 @@
       "y" : 1,
       "size" : 10
     },
+    "default_styles" : {
+      "default" : {
+        "color" : "rgb(0,0,0)",
+        "type" : "def"
+      },
+      "snap:SonOf" : {
+        "color" : "rgb(122,5,122)",
+        "type" : "def",
+        "head" : "arrow"
+      }
+    },
     /**
      * This function create an edge instance if it does not exist in dict, giving a new dict
      * 
@@ -60,13 +71,25 @@
         dict[id] = {
           "id" : id,
           "label" : label || id,
-          "rdf" : rdf
+          "rdf" : rdf,
+          "type" : type
         }
       } else {
         if (dict[id]["label"] === id && typeof label !== "undefined") { 
           dict[id]["label"] = label;
         }
+        if (dict[id]["type"] === id && typeof type !== "undefined") { 
+          dict[id]["type"] = type;
+        }
       }
+
+      // Merge with types if available
+      if(typeof dict[id]["type"] !== "undefined") {
+        if(dict[id]["type"] in sigma.parsers._snap.default_styles) {
+          dict[id] = sigma.utils.extend(dict[id], sigma.parsers._snap.default_styles[dict[id]["type"]]);
+        }
+      }
+
       return dict;
     },
     /**
