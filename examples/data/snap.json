@@ -1,0 +1,33 @@
+{
+  "@context": {
+    "cnt": "http://www.w3.org/2011/content#",
+    "dcmit": "http://purl.org/dc/dcmitype/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "lawd": "http://lawd.info/ontology/",
+    "lode": "http://linkedevents.org/ontology/#",
+    "ns1": "http://onto.snapdrgn.net/",
+    "oa": "http://www.w3.org/ns/oa#",
+    "perseus": "http://data.perseus.org/",
+    "prov": "http://www.w3.org/ns/prov#",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "snap": "http://onto.snapdrgn.net/snap#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@graph": [
+    {
+      "@id": "http://data.perseus.org/collections/urn:cite:perseus:pdlann.141.1/graph#1-rel-1",
+      "@type": "snap:SonOf",
+      "snap:bond-with": {
+        "@id": "http://data.perseus.org/people/smith:Tydeus-1"
+      }
+    },
+    {
+      "@id": "http://data.perseus.org/people/smith:Diomedes-1",
+      "snap:has-bond": {
+        "@id": "http://data.perseus.org/collections/urn:cite:perseus:pdlann.141.1/graph#1-rel-1"
+      }
+    }
+  ]
+}

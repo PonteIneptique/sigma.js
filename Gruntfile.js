@@ -73,6 +73,7 @@ module.exports = function(grunt) {
     'layout.forceAtlas2',
     'parsers.gexf',
     'parsers.json',
+    'parsers.snap',
     'plugins.animate',
     'plugins.dragNodes',
     'plugins.filter',
