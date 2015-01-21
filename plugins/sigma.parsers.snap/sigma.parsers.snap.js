@@ -142,10 +142,12 @@
                 element.forEach(function(bond) {
                   tempgraph["edges"] = sigma.parsers._snap.edge(tempgraph["edges"], bond["@id"], bond["rdfs:label"]);
                   tempgraph["edges"][bond["@id"]]["source"] = element["@id"];
+                  tempgraph["edges"][bond["@id"]]["type"] = element["arrow"];
                 });
               } else {
                 tempgraph["edges"] = sigma.parsers._snap.edge(tempgraph["edges"], element["snap:has-bond"]["@id"], element["snap:has-bond"]["rdfs:label"]);
                 tempgraph["edges"][element["snap:has-bond"]["@id"]]["source"] = element["@id"];
+                tempgraph["edges"][element["snap:has-bond"]["@id"]]["type"] = element["arrow"];
               }
               // We set up the source of the edge
             }
